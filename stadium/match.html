@@ -1,0 +1,159 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>{{info_match.team_1_name}} - {{info_match.team_2_name}}</strong></h5>
+                <!--<p>Лучшее место для заработка и проверки твоих боевых навыков</p>-->
+            </div>
+        </div>
+
+{% if status == 3 or status == 4%}
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <p style="height: 16px;text-align: center">Космонавты уже в пути! Оцепление начнется в <b>{{ cosmo_time.strftime('%H:%M:%S') }}</b></p><br>
+            </div>
+        </div>
+
+
+{% endif %}
+
+{% if leader_message %}
+    <div class="row">
+            <div class="col" style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17 ;">
+                    {% for message in leader_message %}
+                        <p class="text-left text-sm-left text-md-left text-lg-left text-xl-left text-xxl-left justify-content-center align-items-left align-content-left my-auto" style="text-align: left;padding: 4px;white-space: pre-wrap;overflow: auto;">{{ message.message|safe }}<br></p>    
+                    {% endfor %}
+            </div>
+        </div>
+{% endif %}
+
+{% if in_match == 0 %}
+    {% if leader_in_match == 1 %}
+        {% if user_head_info.user_rang == "Лидер клуба" %} 
+            <form action="match-leader" method="post">
+
+            <input type="hidden" name="matchid" value="{{ match_id }}">
+            <div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+            <hr>
+            <div class="rov" style="background: #CCDBBC;border: 0px;">Сообщение лидера: </div>
+                <div class="col" style="background: #CCDBBC;border: 0px;">
+                    <textarea row="2" max-rows="3" name="say" style="width: 100%;resize: none;" maxlength="35">{% if reply_tag %} [{{ reply_tag }}]: {% endif %}</textarea>
+                </div>
+                </div>
+                <div class="row" style="background: #CCDBBC;">
+                    <center>
+                        <button type="submit" style="background-color: red; color: white; border: 0px;">Сказать</button></form>
+                    </center>
+                    <br><br>
+                </div>
+        {% endif %} 
+    {% else %}
+        {% if user_head_info.user_rang == "Помощник лидера" %}
+            <form action="match-leader" method="post">
+
+            <input type="hidden" name="matchid" value="{{ match_id }}">
+            <div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+            <hr>
+            <div class="rov" style="background: #CCDBBC;border: 0px;">Сообщение лидера: </div>
+                <div class="col" style="background: #CCDBBC;border: 0px;">
+                    <textarea row="2" max-rows="3" name="say" style="width: 100%;resize: none;" maxlength="35">{% if reply_tag %} [{{ reply_tag }}]: {% endif %}</textarea>
+                </div>
+                </div>
+                <div class="row" style="background: #CCDBBC;">
+                    <center>
+                        <button type="submit" style="background-color: red; color: white; border: 0px;">Сказать</button></form>
+                    </center>
+                    <br><br>
+                </div>
+    {% endif %}
+    {% endif %}
+{% endif %}
+
+
+{% if status == 2 or status == 5 %}
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;padding-top: 15px;padding-bottom: 15px;">
+              <center>
+                {% if in_match == 0 %} <a href="match-fight"><button  class="btn"  style="background-color:brown;">В бой</button></a> {% endif %}
+                  <a onClick="window.location.reload();"><button  class="btn"  style="background-color: orange;">Обновить</button></a>
+                </center>
+            </div><br><br>
+        </div>
+{% endif %}
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-0right: -15px;height: 45px;">
+        <p style="text-align: center;background-color: orange;height: 26px;">
+
+        <img src="static/clubs/club_{{team_one}}/t-club{{team_one}}.png" width="16px" height="16px">    
+        {{info_match.team_1_name}} [{{info_match.team_1}}] - [{{info_match.team_2}}] {{info_match.team_2_name}} 
+        <img src="static/clubs/club_{{team_two}}/t-club{{team_two}}.png" width="16px" height="16px">
+
+        </p>
+            </div> 
+
+<div class="row" style="background: #CCDBBC;">
+    <!-- Dynamic Table Simple -->
+          <div class="block block-rounded">
+            <div class="block-content block-content-full">
+              <!-- DataTables init on table by adding .js-dataTable-simple class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                <tbody>
+                    {% for message in match_history %}
+                      <tr>
+                        <td class="text-left">
+                            {{ message[0]|safe }}
+                          </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- END Dynamic Table Simple -->
+</div>
+
+
+
+{% if list_eats %}
+    <div class="row" style="text-align: center;background: #CCDBBC;height: 75px;">
+        {% for eat in list_eats %}
+        <div class="col-2" style="padding-top: 0px;border-radius: 15px;min-width: 75px;max-width: 75px;position: relative;">
+            <a href="eat?id={{eat.item_id}}&name={{ eat.item_name }}"><img style="border-radius: 15px;" height="70px" width="70px" src="{{eat.item_avatar}}"></a>
+            <div style="position: absolute;right: -6px;bottom: 5px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{eat.item_count}}</span></div>
+        </div>  
+        {% endfor %}
+    </div>
+{% endif %}
+
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="stadium"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 20; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 9,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 10,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+
+{% include "base/footer.html" %}

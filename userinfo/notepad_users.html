@@ -1,0 +1,71 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Блокнот</strong></h5>
+            </div>
+        </div>
+
+
+<style>
+    .table-bordered>:not(caption)>*>* {
+        padding: 0px;
+    }
+    .table-bordered>:not(caption)>*>* {
+        border-width: 0 0px;
+    }
+</style>
+
+<div class="row">
+    <div class="block block-rounded" style="background: #CCDBBC;">
+    <div class="block-content block-content-full">
+      <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+        <tbody>
+        {% for user in user_in_notepad %}
+        <tr><td>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col-3"><img height="75px" width="75px" src="{{user.user_avatar}}" style="padding-top: 0px;"></div>
+            <div class="col-7" style="padding-right: 5px;padding-left: 7px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong><a style="color: #CA4D29" href="user-{{ user.user_id }}">{{ user.user_name }}</a></strong> [{{user.user_level}}]</p>
+                <div style="margin-top: 5px;">                
+            </div></div>
+            <hr style="height: 1px;margin-top: 5px;">
+        </div>
+        </td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="home"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 20; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 10,
+      limitPagination: 20,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 10,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+{% include "base/footer.html" %}

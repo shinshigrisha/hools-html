@@ -1,0 +1,39 @@
+{% include "base/header.html" %}
+
+{% if not src_new_avatar %}<form action="edit-avatar" method="POST" enctype="multipart/form-data"> {% endif %}
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Изменить аватар</strong></h5>
+                <center><p style="text-align: left;font-size: 16px;">Первый раз - 30 <img src="static/icons/dollar.webp" width="20px" height="20px">, каждый следующий - 
+                30 <img src="static/assets/img/mushroom.webp">. Размер файла - не больше 2 мб.</p></center>
+            </div>
+        </div>
+
+<div class="row" style="background: #CCDBBC;padding-left: 15px;">
+        <center>
+            {% if src_new_avatar %}
+                <img src="{{src_new_avatar}}" style="width: 100px;height: 100px;">
+            {% else %}
+                <img src="{{ user_head_info.user_avatar }}" style="width: 100px;height: 100px;">
+            {% endif %}
+        </center>
+</div>
+
+<div class="row" style="background: #CCDBBC;padding-left: 15px;padding-top: 15px;">
+    <center><input type="file" name="newavatar" accept=".jpg,.png,.jpeg"></center>
+    <hr style="margin-top: 10px; height: 2px;"><br>
+</div>
+<div class="row" style="text-align: left;background: #CCDBBC;padding-left: 15px;">
+    <p style="text-align: center">
+    
+    {% if src_new_avatar %}
+        <a href="edit-avatar"><button class="btn" style="background-color: orange;border-width: 0px;">Отмена</button></a>
+        <form action="edit-avatar-success" method="POST" >
+            <input type="hidden" name="newavatar" value="{{ src_new_avatar }}">
+            <button class="btn" type="submit" style="background-color: orange;border-width: 0px;">Сохранить</button>
+    {% else %}
+        <button class="btn" type="submit" style="background-color: orange;border-width: 0px;">Применить</button>
+    {% endif %}</p> 
+</div>
+</form>
+{% include "base/footer.html" %}

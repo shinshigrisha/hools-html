@@ -1,0 +1,35 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Беспроигрышная лотерея</strong></h5>
+                <div class="row">
+                <div class="col-3"><img src="static/loto/hip-hop.webp" width="100%" style="padding-top: 0px;border-radius: 15px;background-color: darkmagenta;"></div>
+                <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                    <p style="padding: 5px;">Главный приз - 1000 $.</p>
+                    </div>
+                </div></br>
+                <p style="font-size: 16px;">Цена: <b>10</b> <img src="static/icons/dollar.svg" width="20px" height="20px"> или <b>10</b> <img src="static/assets/img/mushroom.webp"> <br>
+                Бесплатных билетов: <b>{{free_loto}}</b> </p>
+                <center>
+                    <a href="loto?game=true "><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Играть</button></a>
+                </center>
+                <hr>
+            </div>
+        </div>
+
+        {% for record in list_records %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 5px;">
+            <div class="col" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;font-size: 14px;margin-bottom: 0px;">{{ record.text|safe }}</p>
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+        {% endfor %}
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="center"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+        </div>
+
+
+{% include "base/footer.html" %}

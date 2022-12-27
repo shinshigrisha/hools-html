@@ -1,0 +1,44 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>{{ firm_info.firm_name }}</strong></h5>
+                
+                <p style="text-align: center;margin-top: 5px;">
+                    <img height="90px" width="90px" src="{{ firm_info.firm_avatar }}"style="border-right: 5px;border-width: 1px;"></p>
+                <p> {% if firm_info.battle_text %}<center> {{firm_info.battle_text}} </center> {% else %} <br> {% endif %}</p>
+            </div>
+        </div>
+
+
+{% if user_head_info.user_id ==  firm_info.leader_id %}
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="edit-firm"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/settings.png">&nbsp;Настройки </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-asksub"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/friend-ask.png">&nbsp;Заявки на вступление [{{count_sub_ask}}] </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-upgrade"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/system-update.png">&nbsp;Прокачка мест </button></a></div>
+        </div>
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-flag"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/finish.png">&nbsp;Флаг </button></a></div>
+        </div>
+{% endif %}
+<!--<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="dev"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/information.png">&nbsp;Информация </button></a></div>
+        </div>-->
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-friends"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/add-friend.png">&nbsp;Друзья </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-treasury"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/money-bag.png">&nbsp;Копилка </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="firm-list"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/firms/firm.png">&nbsp;Все фирмы </button></a></div>
+        </div>
+
+
+{% include "base/footer.html" %}

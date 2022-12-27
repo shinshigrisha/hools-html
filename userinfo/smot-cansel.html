@@ -1,0 +1,25 @@
+{% include "base/header.html" %}
+
+<div class="row" style="background: #CCDBBC;padding-bottom: 25px;">
+            <div class="col" style="background: #CCDBBC;">
+            <h5 style="text-align: center;color: #CA4D29;"><strong>Продажа шмота</strong></h5>
+        </div>
+    </div>
+
+          <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 5px;">
+              <div style="padding: 0px 10px;">Ты действительно хочешь продать <b>{{shmot_name}}</b><br><br></div>
+            <!-- Необходимо потратить: <b></b>   <img src="static/assets/img/lightning.webp">
+            Время на выполнение: <b> </b> минут
+            Награда: <b> </b>   <img src="static/assets/img/silver-.webp">-->
+            <center>
+            <a href="sell-shmot?id={{shmot_id}}&sellnow=yes"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Продать</button></a>
+                </center>
+        <br><br>
+        </div>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="garderob"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Назад</button></a><br><br></div>
+        </div>
+
+
+
+{% include "base/footer.html" %}

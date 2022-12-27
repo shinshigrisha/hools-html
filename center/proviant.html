@@ -1,0 +1,41 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Ларек</strong></h5>
+                <div class="row" style="padding-bottom: 30px;">
+                    <div class="col-3"><img src="static/center/mag.webp" width="100%" style="padding-top: 0px;border-radius: 15px;background-color: black;border: 10px;"></div>
+                    <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                        <p style="padding: 5px;">Тут у меня всякое разное, от фастфуда до магических настоек. Ну а что делать? Приходится приспосабливаться.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for item in eats_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style="border-radius: 25px;width: 100px;height: 90px;"><img src="{{ item.avatar }}" style="padding-top: 15px;" width="90px" height="90px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 18px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 18px;color: #CA4D29;"><b> {{ item.name }} </b></p>
+                {{ item.desc|safe }}<br>
+                {% if item.count > 0 %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: <b>{{ item.count }} </b> шт. </p> 
+                {% endif %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">
+                    Цена:<strong> {{  item.price }} <img src="static/icons/dollar.svg" width="20px" height="20px"></strong> или <strong> {{  item.price }} <img src="static/assets/img/mushroom.webp"></strong></p>
+                
+                <a href="mag-market?buy={{ item.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить</button></a>
+                <a href="mag-market?buy={{ item.id }}&count=10"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить 10 шт.</button></a>
+                
+                <!--<a href="mag-market?sell={{ item.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Продать за {{ item.sell }}  <img src="static/assets/img/silver-.webp"></button></a>-->
+                
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+        {% endfor %}
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="mag"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+        </div>
+
+{% include "base/footer.html" %}

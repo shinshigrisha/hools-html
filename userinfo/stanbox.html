@@ -1,0 +1,50 @@
+{% include "base/header.html" %}
+
+<form action="strongbox" method="POST">
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Твой сейф</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Сейф поможет сохранить твои рубли во время махача.</p>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 26px;">
+                Сейчас в сейфе {{ box_money }} <img height="16px" width="16px" src="static/assets/img/silver-.webp" height="20px" width="20px"></p>
+            </div>
+        <form action="strongbox" method="POST">
+            <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+                <div class="col" style="padding-right: 15px;padding-left: 5px;">
+                    Количество рублей
+                    <input type="number" name="summ_safe_send" style="width:100%" >
+                </div><br><br>
+            </div>
+
+            <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;padding-top: 15px;">
+                <div class="col" >
+                <center>
+                    <button class="btn" type="submit" style="background-color: orange;border-width: 0px;" name="operation" value="add">Положить</button>
+                    <button class="btn" type="submit" style="background-color: orange;border-width: 0px;" name="operation" value="get">Снять</button>
+                </center><br>
+            </div>
+        </div>
+    </form>
+
+    
+<div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;padding-top: 15px;">
+    <h5 style="color: #CA4D29;"><strong>Сейф</strong></h5>
+    <div class="col-3" >
+        <img src="static/assets/img/strongbox.png" width="100%">
+    </div>
+    <div class="col-9">
+    Определяет сколько рублей ты можешь хранить одновременно<br>
+    Уровень: <b>{{ box_level }}</b><br>
+    Этот уровень: <b> макс. {{ tlms }}</b> <img src="static/icons/silver.webp" height="20px" width="20px"><br> 
+    Следующий уровень: <b> макс. {{ nlms }}</b> <img src="static/icons/silver.webp" height="20px" width="20px"><br>
+    Цена улучшения: <b>{{ price }}</b> <img src="static/assets/img/dollar.webp"><br><br>
+        <a href="strongbox?upgrade=true"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Улучшить</button></a>
+        <br><br>
+    </div>
+</div>
+
+    
+{% include "base/footer.html" %}

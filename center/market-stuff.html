@@ -1,0 +1,41 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Штукенции</strong></h5>
+                <div class="row" style="padding-bottom: 30px;">
+                    <div class="col-3"><img src="static/center/bariga.webp" width="100%" style="padding-top: 0px;border-radius: 15px;background-color: black;border: 10px;"></div>
+                    <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                        <p style="padding: 5px;">Вы только посмотрите какие занятные вещицы.
+                            Одногаховые, но брать можно когда угодно. Хоть на стадион, хоть еще куда. Я уверен, что оно вам таки пригодится.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for stuff in stuff_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ stuff.avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ stuff.name }} </b></p>
+                {{ stuff.desc|safe }}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                    Стоимость:</strong> {{  stuff.price }} <img src="static/icons/dollar.svg" width="20px" height="20px"> или {{  stuff.price }} <img src="static/assets/img/mushroom.webp"></p><br>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: {{ stuff.count_item }} шт.</p>
+                
+                
+                <a href="market-stuff?buy={{ stuff.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить</button></a>
+                <a href="market-stuff?buy={{ stuff.id }}&count=10"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить 10 шт.</button></a>
+                
+                <!--<a href="market-stuff?sell={{ stuff.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Продать за {{ stuff.sell }}  <img src="static/assets/img/silver-.webp"></button></a>-->
+                
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+        {% endfor %}
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="market"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+        </div>
+
+{% include "base/footer.html" %}

@@ -1,0 +1,58 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>В пабе сейчас</strong></h5>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="block block-rounded" style="background: #CCDBBC;">
+            <div class="block-content block-content-full">
+              <!-- DataTables init on table by adding .js-dataTable-simple class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                <tbody>
+                {% for user in user_in_pub %}
+                <tr>
+                    <td >
+                    <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+                        <div class="col-3"><img height="70px" width="70px" src="{{ user.user_avatar }}" style="padding-top: 0px;"></div>
+                        <div class="col-7" style="padding-right: 5px;padding-left: 7px;">
+                            <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong><a style="color: #CA4D29" href="user-{{ user.user_id }}">{{ user.user_name }}</a></strong> [{{user.user_level}}]</p>
+                            <div style="margin-top: 5px;">                
+                        </div></div>
+                    </div>
+                    </td>
+                </tr>
+                {% endfor %}
+             </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 20; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 9,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 10,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+{% include "base/footer.html" %}

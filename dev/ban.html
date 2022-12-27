@@ -1,0 +1,11 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Ты заблокирован</strong></h5>
+                <p style="text-align: left;font-size: 16px;">{{ ban_reason }}</p>
+                <p style="text-align: left;font-size: 16px;"><b>Окончание бана: </b>{{ ban_datetime }}</p>
+            </div>
+        </div>
+
+{% include "base/footer.html" %}

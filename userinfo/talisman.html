@@ -1,0 +1,26 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Талисманы</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Эти вещи должны быть у каждого фаната. Они приносят удачу в жизни и в бою.</p>
+            </div>
+        </div>
+
+        {% for talisman in talisman_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style=";border-radius: 25px;width: 110px;height: 100px;"><img src="{{ talisman.avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 18px;color: #CA4D29;"><b> {{ talisman.name }} </b></p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><b>Шанс: </b>{{ talisman.procent}} %</p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"> {{ talisman.desc }} </p>
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+        {% endfor %}
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="home"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+{% include "base/footer.html" %}

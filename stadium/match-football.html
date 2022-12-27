@@ -1,0 +1,73 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>{{match_team}}</strong></h5>
+                <!--<p>Лучшее место для заработка и проверки твоих боевых навыков</p>-->
+            </div>
+        </div>
+
+<div class="row" style="background: #CCDBBC;">
+    <!-- Dynamic Table Simple -->
+          <div class="block block-rounded">
+            <div class="block-content block-content-full">
+              <!-- DataTables init on table by adding .js-dataTable-simple class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                <tbody>
+                    {% for message in event_list %}
+                      <tr>
+                        <td class="text-left">
+                            {{ message.event_text|safe }}
+                          </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- END Dynamic Table Simple -->
+</div>
+
+
+
+        {% if list_eats %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 75px;">
+            {% for eat in list_eats %}
+            <div class="col-2" style="padding-top: 0px;border-radius: 15px;min-width: 75px;"><a href="eat?id={{eat.id}}&name={{ eat.name }}"><img style="border-radius: 15px;" height="70px" width="70px" src="{{eat.avatar}}"></a>
+            <!--<p style="background-position:bottom right;">{{ eat.count }}</p>-->
+            </div>  
+            {% endfor %}
+        </div>
+        {% endif %}
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="stadium"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 20; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 9,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 10,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+
+{% include "base/footer.html" %}

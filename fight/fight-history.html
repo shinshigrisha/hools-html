@@ -1,0 +1,37 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>{% if fight_result.winner == user_head_info.user_id %}Ты победил {% else %} Тебя отметелили {% endif %}</strong></h5>
+                {% if fight_result.winner == user_head_info.user_id %}
+        <div class="row">
+            <div class="col" style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17 ;">
+                <p class="my-auto" style="padding: 4px;">Ты выиграл: {{ fight_result.wins.winner_rep }} <img src="static/fight/maloik.webp"> 
+                    {% if fight_result.wins.winner_skull == 1 %} {{ fight_result.wins.winner_skull }} <img height="16px" width="16px" src="static/assets/img/skull-and-bones.webp"> {% endif %} {% if fight_result.wins.winner_ex %} +1 <img height="16px" width="16px" src="static/assets/img/stop.webp"
+>{% endif %} <br></p>
+            </div>
+        </div>
+        {% endif %}
+                <p style="text-align: center;margin-top: 5px;">
+                    <img style="border-radius: 15px;" height="90px" width="88px" src="{{ fight_result.ava_att }}"style="border-right: 5px;border-width: 1px;">
+                    VS
+                    <img style="border-radius: 15px;" height="90px" width="88px" src="{{ fight_result.ava_def }}" style="border-right: 5px;border-width: 1px;"></p>
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;height: auto;">
+            {{ fight_result.boxing|safe }}
+            <p style="height: auto;">{{ fight_result.result_fight|safe }} </p>
+            </div>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="margin-bottom: 10px; padding-left: 0px;padding-right: 0px;text-align: left;"><a href="history-shmot{{fight_id}}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/maker.webp">&nbsp;Шмот и оружие </button></a></div>
+        </div>
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: 80px;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="district"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/brass-knuckles.webp" width="24px" height="24px">&nbsp;Искать ещё</button></a></div>
+        </div>
+
+
+{% include "base/footer.html" %}

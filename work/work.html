@@ -1,0 +1,67 @@
+{% include "base/header.html" %}
+
+<div class="row" style="background: #CCDBBC;padding-bottom: 25px;">
+            <div class="col" style="background: #CCDBBC;">
+            <h5 style="text-align: center;color: #CA4D29;"><strong>Работа</strong></h5>
+            <div class="row">
+            <div class="col-3"><img src="static/work/grandmother.webp" width="100%" style="padding-top: 0px;border-radius: 5px;background-color: cornflowerblue;"></div>
+            <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                <p style="padding: 5px;">Так-так...Нужна работа? Мясокомбинат на сегодня нарядов не прислал, но постараюсь подобрать что-то поприличней.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" style="text-align: center;background: #CCDBBC;height: 45px;">
+        <p style="text-align: center;background-color: orange;height: 26px;">
+        {{ work_name }}</p>
+        </div>
+
+{% if work_msg %}
+    <div class="row" style="text-align: left;background: #CCDBBC;padding-left: 5px;">
+        <p>{{ work_msg|safe }}</p>
+    </div>
+{% else %}
+
+{% if work_info.status == 'new' %}
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 5px;">
+            <p>Необходимо потратить: <b>{{ work_info.energy }} </b>   <img src="static/assets/img/lightning.webp"></br>
+            Время на выполнение: <b>{{ work_info.time }} </b> минут</br>
+            Награда: <b>{{ work_info.price }} </b> <img src="static/icons/silver.webp" height="20px" width="20px"></p>
+        </div>
+    <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 5px;">
+        <center>
+            <a href="work?start=true&name={{ work_name }}"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Я берусь!</button></a>
+            <a href="work-info?work_name={{ work_name }}"><button class="btn" type="button" style="background-color: orange;border-width: 0px;">Описание</button></a>
+        </center><br><br>
+    </div>
+        {% endif %}
+
+
+        {% if work_info.status == 'inwork' %}
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 5px;">
+            <p>Выполнено на: <b>{{ work_info.progress }} из {{ work_info.energy }} </b>   <img src="static/assets/img/lightning.webp"></br>
+            Осталось: <b> {{ work_info.end }}</b> минут</br>
+            Награда: <b>{{ work_info.price }} </b>   <img src="static/icons/silver.webp" height="20px" width="20px"></p>
+        </div>
+    <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 5px;padding-bottom: 10px;">
+        <center>
+            <a href="work?status=go"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Выполнить</button></a>
+            <a href="work?status=stop&id={{ work_info.id }}"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Оставить</button></a><br><br>
+        </center>
+    </div>
+        {% endif %}
+
+            {% if list_eats %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 75px;">
+            {% for eat in list_eats %}
+            <div class="col-2" style="padding-top: 0px;border-radius: 15px;min-width: 75px;max-width: 75px;position: relative;"><a href="eat?id={{eat.id}}&name={{ eat.name }}"><img style="border-radius: 15px;" height="70px" width="70px" src="{{eat.avatar}}">
+                <div style="position: absolute;right: -6px;bottom: 5px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{eat.count}}</span></div></a>
+            <!--<p style="background-position:bottom right;">{{ eat.count }}</p>-->
+            </div>  
+            {% endfor %}
+        </div>
+        {% endif %}
+{% endif %}
+
+{% include "base/footer.html" %}

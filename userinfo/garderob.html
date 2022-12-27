@@ -1,0 +1,160 @@
+{% include "base/header.html" %}
+
+    <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Гардероб</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Отправляясь на махач не забудь надеть чистые носки.</p>
+            </div>
+        </div>
+
+<div class="row justify-content-center" style="background: #CCDBBC;padding-top: 10px;">
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if list_amulets.amulet_1 == 'None' %}
+            <br><br>
+            <img src="static/assets/img/empty-amoolet.png" style="min-width: 77px;width: 100%" >
+        {% else %}
+            Осталось: {{ list_amulets.amulet_1_timeout }}
+            <img src="{{ list_amulets.amulet_1 }}" style="min-width: 77px;width: 100%" >
+        {% endif %}
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if shmot.head and shmot.head != 'None'%}
+            <br><br>
+            <a href="used-shmot?id={{ shmot.head_id }}&operation=remove&item_id={{shmot.item_id}}"><img src="{{ shmot.head }}" style="min-width: 77px;width: 100%" ></a>
+        {% else %}
+            <br><br>
+            <img src="static/personage/noshmot/head.png" style="min-width: 77px;width: 100%" >
+        {% endif %}
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if list_amulets.amulet_2 == 'None' %}
+        <br><br>    
+        <img src="static/assets/img/empty-amoolet.png" style="min-width: 77px;width: 100%" >
+        {% else %}
+        Осталось: {{ list_amulets.amulet_2_timeout }}
+        <img src="{{ list_amulets.amulet_2 }}" style="min-width: 77px;width: 100%" >
+        {% endif %}
+    </div>
+</div>
+<div class="row justify-content-center" style="background: #CCDBBC;">
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if shmot.body and shmot.body != 'None' %}
+            <a href="used-shmot?id={{ shmot.body_id }}&operation=remove&item_id={{shmot.item_id}}"><img src="{{ shmot.body }}" style="min-width: 77px;width: 100%" ></a>
+        {% else %}
+            <img src="static/personage/noshmot/body.png" style="min-width: 77px;width: 100%" >
+        {% endif %}
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        <img src="{{ user_head_info.user_avatar }}" style="min-width: 77px;width: 100%" >
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if shmot.weapon and shmot.weapon != 'None' %}
+            <a href="used-shmot?id={{ shmot.weapon_id }}&operation=remove&item_id={{shmot.item_id}}"><img src="{{ shmot.weapon }}" style="min-width: 77px;width: 100%" ></a>
+        {% else %}
+            <img src="static/personage/noshmot/weapon.png" style="min-width: 77px;width: 100%" >
+        {% endif %}
+    </div>
+</div>
+<div class="row justify-content-center" style="background: #CCDBBC;padding-bottom: 10px;">
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if list_amulets.amulet_3 == 'None' %}
+            <img src="static/assets/img/empty-amoolet.png" style="min-width: 77px;width: 100%" >
+            <br><br>    
+        {% else %}
+            <img src="{{ list_amulets.amulet_3 }}" style="min-width: 77px;width: 100%" >
+            Осталось: {{ list_amulets.amulet_3_timeout }}
+        {% endif %}
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if shmot.legs and shmot.legs != 'None' %}
+            <a href="used-shmot?id={{ shmot.legs_id }}&operation=remove&item_id={{shmot.item_id}}"><img src="{{ shmot.legs }}" style="min-width: 77px;width: 100%" ></a>
+            <br><br>    
+        {% else %}
+            <img src="static/personage/noshmot/legs.png" style="min-width: 77px;width: 100%" >
+            <br><br>
+        {% endif %}
+    </div>
+    <div class="col" style="background: #CCDBBC;width: auto;max-width: 125px;">
+        {% if list_amulets.amulet_4 == 'None' %}
+            <img src="static/assets/img/empty-amoolet.png" style="min-width: 77px;width: 100%" >
+            <br><br>
+        {% else %}
+            <img src="{{ list_amulets.amulet_4 }}" style="min-width: 77px;width: 100%" >
+            Осталось: {{ list_amulets.amulet_4_timeout }}
+        {% endif %}
+    </div>
+</div>
+
+        <div class="row" style="text-align: center;background: #CCDBBC;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 26px;">
+            На полках</p>
+            </div>
+
+        {% for item in list_invent %}
+            {% if (item.category == 'weapon' or item.category == 'clothing') and item.used != 1 %}
+            <div class="row" style="text-align: center;background: #CCDBBC;padding-left: 15px;">
+                <div class="col-3" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ item.item_avatar }}" width="70px" height="70px"></div>
+                <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ item.item_name }} </b></p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: {{ item.item_count }}</p>
+                    
+                    {% if item.category == 'weapon' or item.category == 'clothing' %}
+                    <a href="used-shmot?id={{ item.id }}&operation=add&item_id={{item.item_id}}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Надеть</button></a>
+                    <a href="sell-shmot?id={{ item.id }}&sellnow=no"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Продать за {{ item.sell_item_silver }} <img src="static/icons/silver.webp" height="20px" width="20px"> и {{ item.sell_item_gold }} <img src="static/icons/dollar.webp" width="20px" height="20px"></button></a>
+                    {% endif %}
+                </div>
+                <hr style="margin-top: 10px; height: 2px;">
+            </div>
+         {% elif item.category == 'healt' or item.category == 'energy' or item.category == 'display' or item.category == 'evil' or item.category == 'bm-healt' %} 
+            <div class="row" style="text-align: center;background: #CCDBBC;padding-left: 15px;">
+                <div class="col-3" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ item.item_avatar }}"  width="70px" height="70px"></div>
+                <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ item.item_name }} </b></p>
+                    {{ item.item_desc|safe }}<br>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: <b>{{ item.item_count }}</b></p>
+
+                    {% if item.category == 'healt' or item.category == 'energy' or item.category == 'display' or item.category == 'evil' or item.category == 'bm-healt' %}
+                    <a href="eat?id={{ item.item_id }}&name={{ item.item_name }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Заточить</button></a>
+                    {% endif %}
+                </div>
+                <hr style="margin-top: 10px; height: 2px;">
+            </div>
+        {% endif %}
+    {% endfor %}
+
+        {% for item in list_invent %}
+            {% if item.category == 'amulet'%} 
+            <div class="row" style="text-align: center;background: #CCDBBC;padding-left: 15px;">
+                <div class="col-3" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ item.item_avatar }}" width="70px" height="70px"></div>
+                <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ item.item_name }} </b></p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: {{ item.item_count }}</p>
+                    
+                    <a href="used-amulet?id={{ item.item_id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Надеть</button></a>
+                    
+                </div>
+                <hr style="margin-top: 10px; height: 2px;">
+            </div>
+        {% endif %}
+    {% endfor %}
+
+        {% for item in list_invent %}
+            {% if item.category == 'stuff'%} 
+            <div class="row" style="text-align: center;background: #CCDBBC;padding-left: 15px;">
+                <div class="col-3" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ item.item_avatar }}" width="70px" height="70px"></div>
+                <div class="col-9" style="padding-right: 5px;padding-left: 15px;">
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ item.item_name }} </b></p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: {{ item.item_count }}</p>
+                    {{ item.item_desc|safe }}
+                </div>
+                <hr style="margin-top: 10px; height: 2px;">
+            </div>
+        {% endif %}
+    {% endfor %}
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="home"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+{% include "base/footer.html" %}

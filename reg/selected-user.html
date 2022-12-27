@@ -1,0 +1,23 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Выбери персонажа</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Ниже список персонажей. Кликни на того который понравился больше всего!</p>
+            </div>
+        </div>
+
+        {% for pers in personage_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;">
+            <div class="col-3"><img width="70px" height="70px" src="{{ pers.avatar }}" style="padding-top: 0px;border-radius: 5px;"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 5px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>{{ pers.name }}</strong></p>
+                <p style="text-align: left;font-size: 12px;margin-bottom: 0px;">{{ pers.desc }}</p>
+                </br>
+                <a href="selected-club?id={{ pers.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Выбрать персонажа</button></a>
+            </div>
+            <hr style="height: 2px;">
+        </div>
+        {% endfor %}
+
+{% include "base/footer.html" %}

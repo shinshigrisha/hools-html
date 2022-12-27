@@ -1,0 +1,29 @@
+h{% include "base/header.html" %}
+
+<form action="strongbox" method="POST">
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Прокачка мест в фирме</strong></h5>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 26px;">
+                Сейчас максимальное количество участников: {{ this_level_count_user }} </p>
+            </div>
+    
+<div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15pxpadding-left: 15px;padding-top: 15px;">
+    <div class="col-3" >
+        <img src="static/assets/img/strongbox.png" width="100%">
+    </div>
+    <div class="col-9">
+    Уровень: <b>{{ firm_level }}</b><br>
+    Этот уровень: <b> макс. {{ this_level_count_user }}</b> участников<br> 
+    Следующий уровень: <b> макс. {{ next_level_count_user }}</b> участников<br>
+    Цена улучшения: <b>{{ firm_upgrade_price }}</b> <img src="static/icons/dollar.svg" width="20px" height="20px"><br><br>
+        <a href="firm-upgrade?upgrade=true"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Улучшить</button></a>
+        <br><br>
+    </div>
+</div>
+
+    
+{% include "base/footer.html" %}

@@ -1,0 +1,99 @@
+{% include "base/header.html" %}
+
+<div class="row">
+    <div class="col" style="background: #CCDBBC;">
+        <h5 style="text-align: center;color: #CA4D29;"><strong>Шмот</strong></h5>
+        <div class="row" style="padding-bottom: 30px;">
+            <div class="col-3"><img src="static/center/bariga.webp" width="100%" style="padding-top: 0px;border-radius: 15px;background-color: black;border: 10px;"></div>
+            <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                <p style="padding: 5px;">Молодой человек, я сам немножко шью, и в моде кое что понимаю. Ничего лучше за такую цену вы не найдете.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% if clothing_next_level %}
+            <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ clothing_next_level.avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ clothing_next_level.name }} </b></p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                    Сила:</strong> +{{ clothing_next_level.power }}</p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                    Стоимость:</strong> {{  clothing_next_level.price }} <img src="static/icons/silver.webp" height="20px" width="20px"></p>
+            {% if user_head_info.vip_card != 'vip' %}                
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><b> Доступно на следующем уровне </b></p>
+            {% else %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><b> Доступно на следующем уровне </b></p>
+                <a href="market-clothing?buy={{ clothing_next_level.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить</button></a>
+            {% endif %}
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+    {% endif %}
+
+<div class="row" style="background: #CCDBBC;">
+<div class="block block-rounded">
+<div class="block-content block-content-full">
+<table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+<tbody>
+<tr>
+    <td style="width: 100%;padding: 3px;">
+        {% for clothing in clothing_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ clothing.avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ clothing.name }} </b></p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">
+                    {% if clothing.skill == 'stamina' %}
+                    <strong>Стойкость:</strong> +{{ clothing.power }}
+                    {% elif clothing.skill == 'agility' %}
+                    <strong>Ловкость:</strong> +{{ clothing.power }}
+                    {% elif clothing.skill == 'trick' %}
+                    <strong>Хитрость:</strong> +{{ clothing.power }}
+                    {% endif %}</p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                    Стоимость:</strong> {{  clothing.price }} <img src="static/icons/silver.webp" height="20px" width="20px"></p>
+                
+                
+                <a href="market-clothing?buy={{ clothing.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить</button></a>
+                
+                <!--<a href="market-clothing?sell={{ clothing.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Продать за {{ clothing.sell }}  <img src="static/icons/silver.webp" height="20px" width="20px"></button></a>-->
+                
+            </div>
+            <hr style="margin-top: 10px; height: 2px;argin-left: -15px;">
+        </div>
+        {% endfor %}
+        </td>
+</tr>
+</tbody></table></div></div></div>
+
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="market"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+        </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 5; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 5,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 5,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+{% include "base/footer.html" %}

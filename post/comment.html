@@ -1,0 +1,80 @@
+{% include "base/header.html" %}
+
+
+<div class="row">
+    <div class="col" style="background: #CCDBBC;">
+        <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Комментарии</strong></h5>
+    </div>
+</div>
+
+
+<div class="row" style="background: #CCDBBC;">
+    <!-- Dynamic Table Simple -->
+          <div class="block block-rounded">
+            <div class="block-content block-content-full">
+              <!-- DataTables init on table by adding .js-dataTable-simple class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                <tbody>
+                    {% for comment in list_comments %}
+                      <tr>
+                        <td class="text-left">
+                            <p style="font-size: 16px; text-align: left;color: #CA4D29;padding-bottom: 5px;"><b><a href="user-{{comment.user_id}}" style="color: #CA4D29;">{{comment.user_name}}</a></b>  
+                                {% if user_head_info.user_access == 'moderator' %} <a href="comment-{{ message_id }}?delete={{comment.id}}" style="color:darkviolet;"><img src="static/assets/img/delete.png" width="16px" height="16px"></a>
+                            {% endif %}</p>
+                            {{ comment.user_comment|safe}}
+                          </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- END Dynamic Table Simple -->
+</div>
+
+{% if comment_input != 1 %}
+<form action="comment-{{ message_id }}" method="post">
+<div class="row">
+    <div class="col-12" style="background: #CCDBBC;border: 0px;">
+        <label>комментарий:</label>
+        <textarea row="20" id="editor" name="comment" style="width: 100%;resize: none;" maxlength="495"></textarea>
+    </div>
+</div>
+<div class="row" style="background: #CCDBBC;">
+    <center><br>
+    <button type="submit" style="background-color: red; color: white; border: 0px;">Отправить</button></form><br><br></div>
+{% endif %}
+    
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.6.0/umd/popper.min.js" integrity="sha512-BmM0/BQlqh02wuK5Gz9yrbe7VyIVwOzD1o40yi1IsTjriX/NGF37NyXHfmFzIlMmoSIBXgqDiG1VNU6kB5dBbA==" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>    
+
+    
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+    
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 1000; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 50,
+      limitPagination: 50,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 20,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+{% include "base/footer.html" %}

@@ -1,0 +1,82 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Заявки на вступление в фирму</strong></h5>
+                <p>{{ description }}.</p>
+            </div>
+        </div>
+
+
+<style>
+    .table-bordered>:not(caption)>*>* {
+        padding: 0px;
+    }
+    .table-bordered>:not(caption)>*>* {
+        border-width: 0 0px;
+    }
+</style>
+
+<div class="row">
+    <div class="block block-rounded" style="background: #CCDBBC;">
+    <div class="block-content block-content-full">
+      <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+        <tbody>
+            {% if user_list %}
+                {% for user in user_list %}
+                     <tr><td>
+                        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15pxheight: auto;">
+                            <div class="col-3"><img height="90px" width="90px" src="{{user.user_avatar}}" style="padding-top: 0px;"></div>
+                            <div class="col-7" style="padding-right: 5px;padding-left: 7px;">
+                                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong><a style="color: #CA4D29" href="user-{{ user.id }}">{{ user.user_name }}</a></strong> [{{user.user_level}}]</p>
+                                <br>
+                                {% if firm_level > count_sub %}
+                                    <a href="firm-asksub?type=sub&user_id={{ user.user_id }}"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Приять</button></a>
+                                    <a href="firm-asksub?type=notsub&user_id={{ user.user_id }}"><button class="btn" type="button" style="background-color: orange;border-width: 0px;">Отклонить</button></a>
+                                {% else %}
+                                    <p style="text-align: center">Для того чтобы принять пользователя - нужно прокачать количество мест в фирме!</p>
+                                {% endif %}
+                                <div style="margin-top: 5px;">                
+                            </div></div>
+                            <hr style="height: 1px;margin-top: 5px;">
+                        </div>
+                  </td>
+                     </tr>
+                {% endfor %}
+            {% endif %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15pxheight: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-firm"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 10; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 9,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 10,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+
+{% include "base/footer.html" %}

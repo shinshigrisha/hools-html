@@ -1,0 +1,29 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Достижения и награды</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Здесь хранятся добытые тобой, особые вещи.</p>
+            </div>
+        </div>
+
+
+        {% for achieve in list_ach %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col-4"><img height="100px" width="100px" src="{{achieve.avatar}}" style="padding-top: 0px;"></div>
+            <div style="position: absolute;font-size: 15px;background-color: #00000050;width: 2px;">
+                <span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{achieve.count}}</span></div>
+            
+            <div class="col-8" style="padding-right: 5px;padding-left: 7px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong style="color: #CA4D29">{{ achieve.name }}</strong></p>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">{{ achieve.desc }}</p>
+                <div style="margin-top: 5px;">
+            </div></div>
+            <hr style="height: 1px;margin-top: 5px;">
+        </div>
+        {% endfor %}
+
+
+
+{% include "base/footer.html" %}

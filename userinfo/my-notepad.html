@@ -1,0 +1,33 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Блокнот</strong></h5>
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad-users?category=Кореша"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Кореша [{{count_user.friends}}]</button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad-users?category=Мясо"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Мясо [{{count_user.meet}}]</button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad-users?category=Игнор"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Игнор [{{count_user.ignor}}]</button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad-users?category=Остальные"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Остальные [{{count_user.other}}]</button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad-users?category=Приглашенные"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;">&nbsp;Приглашенные [{{count_user.sub}}]</button></a></div>
+        </div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="home"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+
+{% include "base/footer.html" %}

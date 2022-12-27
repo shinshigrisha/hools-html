@@ -1,0 +1,20 @@
+{% include "base/header.html" %}
+
+<form action="edit-username" method="POST">
+<div class="row">
+    <div class="col" style="background: #CCDBBC;">
+        <h5 style="text-align: center;color: #CA4D29;"><strong>Изменить юзернейм.</strong></h5>
+        <p style="text-align: left;font-size: 14px;">Ты можешь изменить свой юзернейм. Стоимость изменения никнейма - 20 <img src="static/assets/img/mushroom.webp">.</p>
+    </div>
+</div>
+
+<div class="row" style="text-align: left;background: #CCDBBC;padding-left: 15px;padding-bottom: 15px;">
+            Новый никнейм: <input type="text" name="newusername" value="{{user_head_info.user_name}}" style="width: 95%">  
+</div>
+<div class="row" style="text-align: left;background: #CCDBBC;padding-left: 15px;">
+        <p style="text-align: center"><button class="btn" type="submit" style="background-color: orange;border-width: 0px;">Сохранить</button></p>
+</div>
+</form>
+
+
+{% include "base/footer.html" %}

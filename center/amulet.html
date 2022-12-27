@@ -1,0 +1,58 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Амулеты</strong></h5>
+                <div class="row" style="padding-bottom: 30px;">
+                    <div class="col-3"><img src="static/center/mag.webp" width="100%" style="padding-top: 0px;border-radius: 15px;background-color: black;border: 10px;"></div>
+                    <div class="col-8"  style="background: #ffe189;border-radius: 5px;border: 3px solid #EB8A17;margin-left: 20px;">
+                        <p style="padding: 5px;">Вы только посмотрите какие занятные вещицы.
+                            Мои амулеты на время увеличивают твои навыки и дают тебе огромное преимущество в бою.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% for item in list_amulets %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+            <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ item.avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 18px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 18px;color: #CA4D29;"><b> {{ item.name }} </b></p>
+                {% if item.skill_name == 'power' %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">Сила: <b>+ {{ item.skill_power }} </b></p> 
+                {% elif item.skill_name == 'stamina' %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">Стойкость: <b>+ {{ item.skill_power }} </b></p> 
+                {% elif item.skill_name == 'trick' %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">Хитрость: <b>+ {{ item.skill_power }} </b></p> 
+                {% elif item.skill_name == 'agility' %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">Ловкость: <b>+ {{ item.skill_power }} </b></p> 
+                {% endif %}
+                {% if item.count > 0 %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">У тебя есть: <b>{{ item.count }} </b> шт. </p> 
+                {% endif %}
+                {% if item.new_price %}
+                <del><p style="text-align: left;margin-bottom: 0px;font-size: 16px;">
+                    Старая цена:<strong> {{  item.price }} <img src="static/icons/dollar.svg" width="20px" height="20px"></strong> или <strong> {{  item.price }} <img src="static/assets/img/mushroom.webp"></strong></p></del>
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">
+                    <span style="color: #FF5733;">Новая цена:<strong> {{  item.new_price }} <img src="static/icons/dollar.svg" width="20px" height="20px"></strong> или <strong> {{  item.new_price }} <img src="static/assets/img/mushroom.webp"></strong></span><br>
+                    Экономия: <b>33%</b></p>
+
+                {% else %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">
+                    Цена:<strong> {{  item.price }} <img src="static/icons/dollar.svg" width="20px" height="20px"></strong> или <strong> {{  item.price }} <img src="static/assets/img/mushroom.webp"></strong></p>
+                {% endif %}
+                
+                <a href="mag-amulet?buy={{ item.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Купить</button></a>
+                
+                <!--<a href="mag-market?sell={{ item.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Продать за {{ item.sell }}  <img src="static/assets/img/silver-.webp"></button></a>-->
+                
+            </div>
+            <hr style="margin-top: 10px; height: 2px;">
+        </div>
+        {% endfor %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="mag"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+        </div>
+
+
+{% include "base/footer.html" %}

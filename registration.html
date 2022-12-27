@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>hooligans</title>
+    <link rel="stylesheet" href="static/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bevan">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Han+Sans">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Calistoga">
+    <link rel="stylesheet" href="static/assets/css/Login-Form-Clean.css">
+    <link rel="stylesheet" href="static/assets/css/Registration-Form-with-Photo.css">
+    <link rel="stylesheet" href="static/assets/css/styles.css">
+</head>
+
+<body>
+    <section class="register-photo">
+        <div class="form-container">
+            <form method="post">
+                <h2 class="text-center"><strong>Регистрация в игре</strong></h2>
+                <div class="mb-3"><input class="form-control" type="email" name="email" placeholder="Email"></div>
+                <div class="mb-3"><input class="form-control" type="text" name="nickname" placeholder="Никнейм"></div>
+                <div class="mb-3"><input class="form-control" type="password" name="password" placeholder="Пароль"></div>
+                <div class="mb-3"><input class="form-control" type="hidden" name="referal" value="{{referal}}"></div>
+                <div class="mb-3">
+                    <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">Принимаю правила игры и политику конфиденциальности</label></div>
+                </div>
+                {{ xcaptcha }}
+                {% with messages = get_flashed_messages() %}
+                  {% if messages %}
+                    <p class="flashes" style="background-color: darksalmon;" >
+                    {% for message in messages %}
+                      {{ message }}
+                    {% endfor %}
+                    </p>
+                  {% endif %}
+                {% endwith %}
+                <div class="mb-3"><button class="btn btn-primary d-block w-100" type="submit" style="background: #467259;">Зарегистрироваться</button></div>Я уже зарегистрирован. <a href="login">Войти</a>
+            </form>
+        </div>
+    </section>
+    <script src="static/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>

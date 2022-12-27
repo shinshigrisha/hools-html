@@ -1,0 +1,34 @@
+{% include "base/header.html" %}
+
+<form action="firm-treasury" method="POST">
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Копилка фирмы</strong></h5>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 26px;">
+                Сейчас в копилке: {{ firm_balance }} <img src="static/icons/dollar.webp" width="20px" height="20px"> </p>
+            </div>
+    
+            <form action="firm-treasury" method="POST">
+            <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+                <div class="col" style="padding-right: 15px;padding-left: 5px;">
+                    Сумма:
+                    <input type="number" name="summ_safe_send" style="width:100%" >
+                </div><br><br>
+            </div>
+
+            <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;padding-top: 15px;">
+                <div class="col" >
+                <center>
+                    <button class="btn" type="submit" style="background-color: orange;border-width: 0px;" name="operation" value="add">Положить</button>
+                </center><br>
+            </div>
+        </div>
+    </form>
+
+    
+    
+    
+{% include "base/footer.html" %}

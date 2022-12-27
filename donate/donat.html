@@ -1,0 +1,214 @@
+{% include "base/header.html" %}
+
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Покупка грибов</strong></h5>
+            <p>
+                Твой ID (используй его в комментарии к платежу): <input type="text" style="width: 100px;" value="u{{ user_head_info.user_id }}"></p>
+
+                <p style="text-align: left;font-size: 14px;">Пополни баланс на сайте, после чего обменяй USDT на грибы (в USDT 1 USDT = 1 Доллар США). <b>На выполнение операции может уйти до 3-х часов.</b>
+                <br>После пополнения баланса на сайте вы сможете обменять USD на грибы.<br><b>Курс обмена 100 грибов - 5 USDT.</b><br><b>Минимальная сумма пополнения - 1 USD</b></p>
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: center;background: #CCDBBC;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 20px;">
+                Твой баланс: {{ user_head_info.balance }} USDT</p>
+            </div>
+        <!--<form action="strongbox" method="POST">
+            <div class="row" style="text-align: left;background: #CCDBBC;padding-left: 15px;">
+                <div class="col" style="padding-right: 15px;padding-left: 5px;">
+                    Сумма:
+                    <input type="number" name="summ_usdt" style="width:100%" >
+                </div><br><br>
+            </div>-->
+
+            <div class="row" style="text-align: left;background: #CCDBBC;padding-left: 15px;padding-top: 15px;">
+                <div class="col" >
+                <center>
+                    <a href="https://secure.wayforpay.com/donate/hoolsonline"><button class="btn" style="background-color: orange;border-width: 0px;">Пополнить Visa/Mastercard</button></a></center><br>
+                    <center>
+                    <button class="btn" data-toggle="modal" data-target="#ruModal" style="background-color: orange;border-width: 0px;margin-bottom: 10px;">Пополнить баланс (RUB)</button>
+                    <button class="btn" data-toggle="modal" data-target="#byModal" style="background-color: orange;border-width: 0px;margin-bottom: 10px;">Пополнить баланс (BYN)</button>
+                </center><br>
+            </div>
+            <hr>
+        </div>
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Начало".</strong></p>
+
+        Стоимость: <b>1 USDT</b><br>
+        Получите: <b>20 <img src="static/assets/img/mushroom.webp"></b><br>
+        <!--<del>Получите: <b>20 <img src="static/assets/img/mushroom.webp"></b><br></del>-->
+        <!--Получите по акции: <b>24 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        <a href="donat-page?id=1"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div>
+<hr>
+</div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Стандарт".</strong></p>
+
+        Стоимость: <b>5 USDT</b><br>
+        Получите: <b>100 <img src="static/assets/img/mushroom.webp"></b><br>
+        <!--<del>Получите: <b>100 <img src="static/assets/img/mushroom.webp"></b></del><br>-->
+        <!--Получите по акции: <b>120 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        <a href="donat-page?id=2"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div>
+    <hr>
+</div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Вип".</strong></p>
+
+        Стоимость: <b>10 USDT</b><br>
+        Получите: <b>200 <img src="static/assets/img/mushroom.webp"></b><br>
+        <!--<del>Получите: <b>200 <img src="static/assets/img/mushroom.webp"></b><br></del>-->
+        <!--Получите по акции: <b>240 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        Бонус: <b>30 <img src="static/assets/img/mushroom.webp"></b><br>
+        <b>Всего:</b> 230<img src="static/assets/img/mushroom.webp">
+        <a href="donat-page?id=3"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div><hr>
+</div>
+
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Опт".</strong></p>
+
+        Стоимость: <b>25 USDT</b><br>
+        Получите: <b>500 <img src="static/assets/img/mushroom.webp"></b><br>
+        <!--<del>Получите: <b>500 <img src="static/assets/img/mushroom.webp"></b></del><br>-->
+        <!--Получите по акции: <b>600 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        Бонус: <b>75 <img src="static/assets/img/mushroom.webp"></b><br>
+        <b>Всего:</b> 575<img src="static/assets/img/mushroom.webp">
+        <a href="donat-page?id=4"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div><hr>
+</div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Меценат".</strong></p>
+
+        Стоимость: <b>50 USDT</b><br>
+        Получите: <b>1000 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        <!--<del>Получите: <b>1000 <img src="static/assets/img/mushroom.webp"></b></del><br>-->
+        <!--Получите по акции: <b>1200 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        Бонус: <b>150 <img src="static/assets/img/mushroom.webp"></b><br>
+        <b>Всего:</b> 1150<img src="static/assets/img/mushroom.webp">
+        <a href="donat-page?id=5"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div><hr>
+</div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;">
+    <div class="col-3" >
+        <img src="static/assets/img/hot-deal.png" width="100%">
+    </div>
+    <div class="col-9" style="text-align:left;">
+        <p style="color: #CA4D29;"><strong>Пакет "Максимум".</strong></p>
+
+        Стоимость: <b>100 USDT</b><br>
+        <!--Получите: <b>500 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        Получите: <b>2000 <img src="static/assets/img/mushroom.webp"></b></del><br>
+        <!--Получите по акции: <b>2400 <img src="static/assets/img/mushroom.webp"></b><br>-->
+        Бонус: <b>300 <img src="static/assets/img/mushroom.webp"></b><br>
+        <b>Всего:</b> 2300<img src="static/assets/img/mushroom.webp">
+        <a href="donat-page?id=6"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Обменять</button></a><br><br>
+    </div><hr>
+</div>
+
+    
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="byModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Инструкция по пополнению для пользователей из Беларуси</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        В связи с действующими ограничениями поддержка проекта пользователями из России осуществляется в ручном режиме. <br>
+Курс обмена - 1$ = 2.6 BYN.<br><br>
+
+1. Нажимай кнопку "Написать в телеграмм". <br>
+2. Напиши в телеграмме данные для идентификации аккаунта (лучше всего ваш айди). <br>
+3. Напишите сумму на которую хотите пополнить баланс в игре (минимум 2.6 BYN)<br>
+4. После перевода на реквизиты которые получите в ответ - я начислю вам на баланс соответствующею сумму. <br>
+<br>
+Начисления происходят в ручном режиме, по этому могут занять до 1 часа, с 8 до 22. <br>
+Все оплаты которые были до или после указанного времени - будут начислены в рабочее время.<br>
+Пополнения сделаные во время акции - можно будет обменять на грибы по тому же акционному курсу.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+        <a href="https://t.me/Kazak2301"><button type="button" class="btn btn-primary">Написать в телеграмм</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="ruModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Инструкция по пополнению для пользователей из России</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        В связи с действующими ограничениями поддержка проекта пользователями из России осуществляется в ручном режиме. <br>
+Курс обмена - 1$ = 64 RUB.<br><br>
+
+1. Нажимай кнопку "Написать в телеграмм". <br>
+2. Напиши в телеграмме данные для идентификации аккаунта (лучше всего ваш айди). <br>
+3. Напишите сумму на которую хотите пополнить баланс в игре (минимум 64 RUB)<br>
+4. После перевода на реквизиты которые получите в ответ - я начислю вам на баланс соответствующею сумму. <br>
+<br>
+Начисления происходят в ручном режиме, по этому могут занять до 1 часа, с 8 до 22. <br>
+Все оплаты которые были до или после указанного времени - будут начислены в рабочее время.<br>
+Пополнения сделаные во время акции - можно будет обменять на грибы по тому же акционному курсу.<br>
+<img src="static/pay/p2.jpg" width="100%">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Отмена</button>
+        <a href="https://t.me/xPudZheNx"><button type="button" class="btn btn-primary">NemezPay</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% include "base/footer.html" %}

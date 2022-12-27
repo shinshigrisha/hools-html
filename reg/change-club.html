@@ -1,0 +1,26 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Переход</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Изменить клуб можно только 1 раз.</p>
+            </div>
+        </div>
+
+        {% for club in club_list %}
+            {% if club.id == 6 %}
+                <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;">
+                    <div class="col-4"><img src="{{ club.avatar }}" style="padding-top: 0px;width: 100px;"></div>
+                    <div class="col-8" style="padding-right: 5px;padding-left: 5px;">
+                        <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>{{ club.name }}</strong></p>
+                        <p style="text-align: left;font-size: 14px;margin-bottom: 0px;">Фанатов: <strong> {{ club.funs }}</strong></p>
+                        <p style="text-align: left;font-size: 14px;margin-bottom: 0px;">Рейтинг: <strong>{{ club.rating }}</strong></p>
+                        </br>
+                        <a href="change-club?id={{ club.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Выбрать клуб</button></a>
+                    </div>
+                    <hr style="margin-top: 10px; height: 2px;">
+                </div>
+            {% endif %}
+        {% endfor %}
+
+{% include "base/footer.html" %}

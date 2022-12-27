@@ -1,0 +1,68 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Оружие</strong></h5>
+                <p style="text-align: left;font-size: 14px;">Описание.</p>
+            </div>
+        </div>
+
+        {% if not status_prom %}
+            {% for weapon in weapon_list %}
+            <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;">
+                <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ weapon.avatar }}" width="100px" height="100px"></div>
+                <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ weapon.name }} </b></p>
+                    
+                    {% if weapon.level == 1 %}
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Уровень:</strong> {{ weapon.level }} => {{ weapon.level + 1}}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Время на улучшение:</strong> {{ weapon.time_os }}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Стоимость:</strong> {{ weapon.price_os }} <img src="static/icons/dollar.svg" width="20px" height="20px"></p>
+                    {% endif %}
+
+                    {% if weapon.level == 2 %}
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Уровень:</strong> {{ weapon.level }} => {{ weapon.level + 1}}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Время на улучшение:</strong> {{ weapon.time_ts }}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Стоимость:</strong> {{ weapon.price_ts }} <img src="static/icons/dollar.svg" width="20px" height="20px"></p>
+                    {% endif %}
+                    
+                    {% if weapon.level == 3 %}
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Уровень:</strong> {{ weapon.level }} => {{ weapon.level + 1}}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Время на улучшение:</strong> {{ weapon.time_ths }}</p>
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Стоимость:</strong> {{ weapon.price_ths }} <img src="static/icons/dollar.svg" width="20px" height="20px"></p>
+                    {% endif %}
+
+                    {% if weapon.level == 4 %}
+                    <p style="text-align: left;margin-bottom: 0px;font-size: 16px;"><strong>
+                        Уровень:</strong> {{ weapon.level }} (максимальный)</p>
+                    {% endif %}
+
+                    {% if weapon.level != 4 %}
+                    <a href="prom-weapon?id={{ weapon.id }}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Улучшить</button></a>
+                    {% endif %}
+                </div>
+                <hr style="margin-top: 10px; height: 2px;">
+            </div>
+            {% endfor %}
+    {% else %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;padding-left: 15px;padding-bottom: 20px;">
+            <div class="col-4" style="border-radius: 25px;width: 110px;height: 100px;"><img src="{{ update_weapon_avatar }}" width="100px" height="100px"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 15px;">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><b> {{ update_weapon_name }} </b></p>
+
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;">Мы работаем над этим. <br>Приходи через:  <strong> {{ end_time }}</strong></p>
+            </div>
+            <center> <a href="prom-weapon?fast={{update_id}}"><button class="btn" type="button" style="padding-right: 14px;padding-top: 0px;padding-bottom: 0px;background: var(--bs-red);border-width: 0px;">Ускорить за {{ donat_price }} <img src="static/assets/img/mushroom.webp"></button></a> </center>
+        </div>
+{% endif %}
+
+{% include "base/footer.html" %}

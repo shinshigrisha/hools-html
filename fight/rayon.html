@@ -1,0 +1,60 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Район</strong></h5>
+                <p>Лучшее место для заработка и проверки твоих боевых навыков</p>
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 45px;">
+            <p style="text-align: center;background-color: orange;height: 26px;">
+                Рекорд дня {{ skull_rating.count_skull }} <img height="16px" width="16px" src="static/assets/img/skull-and-bones.webp"> у <b><a href="user-{{ skull_rating.user_id }}" style="color: #CA4D29;">{{ skull_rating.user_top }}</a></b>. {% if skull_rating.user_top != user_head_info.user_name %} У тебя {{ skull_rating.user_skull }}  <img height="16px" width="16px" src="static/assets/img/skull-and-bones.webp">{% endif %}</p>
+            </div>
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="margin-bottom: 10px; padding-left: 0px;padding-right: 0px;text-align: left;"><a href="gym"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/dumbbell.webp">&nbsp;Качалка {% if count_gym > 0 %} [+{{ count_gym }}] {% endif %}</button></a></div>
+        </div>
+
+        {% for user in user_fight %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col-3"><img height="70px" width="70px" src="{{user.avatar}}" style="padding-top: 0px;border-radius: 15px;"></div>
+            <div class="col-8" style="padding-right: 5px;padding-left: 1px;">
+                {% if user.type == 'user' %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><img src="static/clubs/flag{{ user.club_id }}.png" height="16px" width="16px"> <strong>{{ user.name }}</strong> [{{user.level}}] {% if user_head_info.user_access == 'moderator' %} <a href="dev?id={{user.user_id}}" style="color:darkviolet;"><img src="static/assets/img/warning.png" width="16px" height="16px"></a> {% endif %} </p>
+                {% else %}
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong>{{ user.name }}</strong></p>
+                {% endif %}
+                {% if user.message %}
+                <p style="text-align: left;font-size: 14px;margin-bottom: 0px;">{{ user.message }}</p>
+                {% else %}
+                <br>
+                {% endif %}
+                <div style="margin-top: 5px;">
+                <a href="fight?kick={{ user.random_left }}"><button class="btn" type="button" style="padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;margin-right: 10px;padding-right: 0px;padding-left: 0px;border-radius: 5px;"><img src="static/fight/fight-left.webp" style="width: 55px;height: 55px;"></button></a>
+                
+                <a href="fight?kick={{ user.random_right }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;border-radius: 5px;"><img src="static/fight/fight-right.webp" style="width: 55px;height: 55px;"></button></a>
+            </div></div>
+            <hr style="height: 1px;margin-top: 5px;">
+        </div>
+        {% endfor %}
+
+        {% if list_eats %}
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: 75px;">
+            {% for eat in list_eats %}
+            <div class="col-2" style="padding-top: 0px;border-radius: 15px;min-width: 75px;max-width: 75px;position: relative;"><a href="eat?id={{eat.id}}&name={{ eat.name }}"><img style="border-radius: 15px;" height="70px" width="70px" src="{{eat.avatar}}">
+                <div style="position: absolute;right: -6px;bottom: 5px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{eat.count}}</span></div></a>
+            <!--<p style="background-position:bottom right;">{{ eat.count }}</p>-->
+            </div>  
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="district"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/location/index/brass-knuckles.svg" width="24px" height="24px">&nbsp;Искать ещё</button></a></div>
+        </div>
+
+
+{% include "base/footer.html" %}

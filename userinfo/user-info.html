@@ -1,0 +1,74 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Досье на {{ user_ds.user_name }}</strong></h5>
+                
+                <p style="text-align: center;margin-top: 5px;">
+                    <img height="90px" width="90px" src="{{ user_ds.avatar }}"style="border-right: 5px;border-width: 1px;">
+                    <center>{{ user_ds.battle }}</center>
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <p style="height: 14px;">Имя:<b> {% if user_ds.first_name == 'None' %} Не указано {% else %} {{ user_ds.first_name }} {% endif %}</b></p>
+            <p style="height: 14px;">Статус:<b> {% if user_ds.online == 1 %} <img src="static/assets/img/online.png"> В игре {% else %} <img src="static/assets/img/offline.png"> Не в игре {% endif %}</b></p>
+            <p style="height: 14px;">Страна:<b> {{ user_ds.country }}</b></p>
+            <p style="height: 14px;">Клуб:<b> {{ user_ds.club|safe}}</b></p>
+            {% if user_ds.firm_name %}
+            <p style="height: 14px;">Фирма:<b> {{ user_ds.firm_name|safe}}</b></p>
+            {% endif %}
+            <p style="height: 14px;">Уровень:<b> {{ user_ds.level }}</b></p>
+            <p style="height: 14px;">Ранг:<b> {{ user_ds.rang }}</b></p>
+            <!--<p style="height: 14px;">Карма:<b> {{ user_ds.rang }}</b></p>-->
+            <p style="height: 14px;">Репутация:<b> {{ user_ds.reputation }}</b></p>
+            <p style="height: 14px;">Стаж:<b> {{  user_ds.stage }} дней</b></p>
+            <p style="height: 14px;">Вытряс:<b> {{  user_ds.earned }}</b></p>
+            <p style="height: 14px;">Потерял:<b> {{  user_ds.lost }}</b></p>
+            <!--<p style="height: 14px;">Побед подряд:<b> {{  user_ds.win }}</b></p>
+            <p style="height: 14px;">Макс. побед подряд:<b> {{  user_ds.max_win }}</b></p>-->
+            {% if user_ds.user_name != user_head_info.user_name %}
+            <p style="height: 14px;">Отжал у тебя:<b> {{  lost_you }}</b></p>
+            <p style="height: 14px;">Проиграл тебе:<b> {{ win_you }}</b></p>
+            {% endif %}
+        </div>
+
+    <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+        <p style="text-align: center;background-color: orange;height: 26px;">Навыки (c эффективностью прокачки)</p></div>
+
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <p style="height: 14px;"><b>Сила:</b> {{ user_ds.power }}</p>
+            <p style="height: 14px;"><b>Стойкость:</b> {{  user_ds.stamina }}</p>
+            <p style="height: 14px;"><b>Ловкость:</b> {{  user_ds.agility }}</p>
+            <p style="height: 14px;"><b>Хитрость:</b> {{  user_ds.trick }}</p></div>
+
+
+{% if user_ds.user_name != user_head_info.user_name %}
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="achievement-{{ user_ds.id }}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/medal.png">&nbsp;Достижения и награды </button></a></div></div>
+    
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="talisman-user{{user_ds.id}}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/mag/clover.png">&nbsp;  Талисманы </button></a></div></div>
+    
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="mailpersonal-{{user_ds.id}}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/send-mail.png">&nbsp;Написать сообщение </button></a></div></div>
+    
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="notepad?userid={{user_ds.id}}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/notebook.png">&nbsp;Записать в блокнот </button></a></div>
+</div>
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="remove-notepad?id={{user_ds.id}}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/remove-notepad.png" height="32px" width="32px">&nbsp;Удалить из блокнота </button></a></div>
+</div>
+
+{% if user_ds.club_id != user_head_info.club_id %}
+    <div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+        <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="dev"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/bk.png">&nbsp;Напасть </button></a></div>
+    </div>
+{% endif %}
+
+
+{% endif %}
+{% include "base/footer.html" %}

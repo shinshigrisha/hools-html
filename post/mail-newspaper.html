@@ -1,0 +1,59 @@
+{% include "base/header.html" %}
+
+
+<div class="row">
+    <div class="col" style="background: #CCDBBC;">
+        <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Газета "Третий тайм"</strong></h5>
+    </div>
+</div>
+
+
+<div class="row" style="background: #CCDBBC;">
+    <!-- Dynamic Table Simple -->
+          <div class="block block-rounded">
+            <div class="block-content block-content-full">
+              <!-- DataTables init on table by adding .js-dataTable-simple class, functionality is initialized in js/pages/be_tables_datatables.min.js which was auto compiled from _js/pages/be_tables_datatables.js -->
+              <table class="table table-bordered table-striped table-vcenter js-dataTable-simple">
+                <tbody>
+                    {% for message in list_message %}
+                      <tr>
+                        <td class="text-left">
+                            <p style="font-size: 16px; text-align: left;color: #CA4D29;padding-bottom: 5px;"><b>{{ message.title }}</b></p>
+                            {{ message.message|safe }}
+                            <p style="font-size: 16px; text-align: center;padding-bottom: 5px;">
+                                <a href="comment-{{message.id}}"><button style="background-color: orange;">Комментарии {% if message.comment > 0 %}({{ message.comment }}){% endif %}</button></a></p>
+                          </td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- END Dynamic Table Simple -->
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="static/assets/js/paginathing.js"></script>
+<script type="text/javascript">
+  jQuery(document).ready(function($){
+    for (var i = 1; i <= 1; i++) {
+      $('.list-group').append('<li class="list-group-item"> Item ' + i + '</li>');
+    }
+
+    $('.list-group').paginathing({
+      perPage: 5,
+      limitPagination: 5,
+      containerClass: 'panel-footer',
+      pageNumbers: true
+    })
+
+    $('.table tbody').paginathing({
+      perPage: 1,
+      insertAfter: '.table',
+      pageNumbers: true
+    });
+  });
+</script>
+
+{% include "base/footer.html" %}

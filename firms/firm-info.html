@@ -1,0 +1,39 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"> <strong>{{ firm_info.firm_name }}</strong></h5>
+                
+                <p style="text-align: center;margin-top: 5px;">
+                    <img height="90px" width="90px" src="{{ firm_info.firm_avatar }}"style="border-right: 5px;border-width: 1px;">
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <p style="height: 16px;"><b>Фанатов:</b> {{ firm_info.count_funs }}</p>
+            <p style="height: 16px;"><b>Клуб:</b> {{ firm_info.club_name|safe }}</p>
+            <p style="height: 16px;"><b>Лидер:</b><b>
+                <a href="user-{{firm_info.leader_id}}" style="color: #CA4D29;"> {{ firm_info.leader_name }} </a></b></p> 
+            {% if firm_info.deput_name != 'Не назначен' %}
+            <p style="height: 16px;"><b>Помощник лидера:</b>
+                <b><a href="user-{{firm_info.deput_id}}" style="color: #CA4D29;"> {{ firm_info.deput_name }} </a></b></p> 
+            {% endif %}
+            <p style="height: 16px;"><b>Рейтинг:</b> 0</p>
+            <p style="height: 16px;"><b>Ранг:</b> {{ firm_info.rang }}</p><br><br>
+            
+            {% if firm_info.club_id == user_head_info.club_id and user_head_info.level >= 6 and user_head_info.firm_id == 0 %}
+                <center><a href="firm-{{firm_info.id}}?sub=yes"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Подать заявку на вступление</button></a></center><br><br>
+            {% endif %}
+
+
+            {% if user_firm_leader %}
+                {% if firm_info.club_id != user_head_info.club_id and user_firm_leader == user_head_info.user_id %}
+                    <center><a href="dev"><button class="btn" type="button" style="background: var(--bs-red);border-width: 0px;">Забить стрелу</button></a></center><br><br>
+                {% endif %}
+            {% endif %}
+        </div>
+
+
+{% include "base/footer.html" %}

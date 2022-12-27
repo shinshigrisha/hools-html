@@ -1,0 +1,50 @@
+{% include "base/header.html" %}
+
+<div class="row">
+    <div class="col" style="background: #CCDBBC;">
+        <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Паб</strong></h5>
+    </div>
+</div>
+
+<form action="pub-block" method="post">
+<div class="row"  style="background: #CCDBBC;">
+    <input type="hidden" name="user_id" value="{{ user_id }}">
+    <fieldset>
+        <div class="item">
+            <label>Термин блокировки:</label>
+                <select name='timeblocked'>
+                    <option value="300">5 минут</option>
+                    <option value="1800">30 минут</option>
+                    <option value="3600">1 час</option>
+                    <option value="18000">5 часов</option>
+                    <option value="43200">12 часов</option>
+                    <option value="86400">1 день</option>
+                    <option value="604800">7 дней</option>
+                    <option value="1209600">14 дней</option>
+                    <option value="2592000">30 дней</option>
+                </select><br>
+        </div>
+    </fieldset>
+    
+    <div class="row">
+        <div class="col-3" style="background: #CCDBBC;border: 0px;"><br>Сообщение: </div>
+        <div class="col-6" style="background: #CCDBBC;border: 0px;"><br><textarea row="2" name="message" style="width: 100%;resize: none;" maxlength="255" disabled>{{ user_msg }}</textarea></div></div>
+
+    <div class="row">
+        <div class="col-3" style="background: #CCDBBC;border: 0px;"><br>Причина: </div>
+        <div class="col-6" style="background: #CCDBBC;border: 0px;"><br>
+            <textarea row="2" name="reson" style="width: 100%;resize: none;" maxlength="255" required>{% if reply_tag %} [{{ reply_tag }}]: {% endif %}</textarea>
+        </div></div>
+</div>
+<div class="row" style="background: #CCDBBC;min-width: 75px;border: 0px;"><br><br>
+    <fieldset>
+        <div class="item">
+            <input type="checkbox" id="blockedaccount" name="blockedfull" value="true">
+            <label for="blockedaccount">Заявка на общую блокировку аккаунта</label>
+        </div>
+    </fieldset>
+    <button type="submit" style="background-color: red; color: white; border: 0px;min-height: 45px;font-size: 16px;"><b>Заблокировать</b></button>
+</div>
+</form>
+
+{% include "base/footer.html" %}

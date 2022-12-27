@@ -1,0 +1,46 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>{{ user_head_info.user_name }}</strong></h5>
+                <br>
+            </div>
+        </div>
+
+
+
+<div class="row" style="text-align: center;background: #C34A50 ;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="vip"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #C34A50;border-color: #C34A50;border-radius: 0px;height: 45px;"><img src="static/assets/img/vip-ds.png">&nbsp;VIP </button></a></div>
+</div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="user-{{ user_head_info.user_id }}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/dossier.png">&nbsp;Досье </button></a></div>
+</div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="garderob"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/wardrobe.png">&nbsp;Гардероб </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="my-notepad"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/notebook.png">&nbsp;Блокнот </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="achievement-{{ user_head_info.user_id }}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/medal.png">&nbsp;Достижения и награды </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="strongbox"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/strongbox-ds.png">&nbsp;Сейф </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="talisman-user{{ user_head_info.user_id }}"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/mag/clover.png">&nbsp;Талисманы </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="user-tattoo"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/tattoo-studio.png">&nbsp;Татухи </button></a></div>
+        </div>
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <div class="col" style="padding-left: 0px;padding-right: 0px;text-align: left;"><a href="edit-user"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/settings.png">&nbsp;Настроить </button></a></div>
+        </div>
+
+
+<div class="row" style="text-align: center;background: #CCDBBC;margin-right: -15px;height: auto;">
+    <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="index"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png">&nbsp;Назад</button></a></div>
+</div>
+
+{% include "base/footer.html" %}

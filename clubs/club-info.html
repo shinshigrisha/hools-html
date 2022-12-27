@@ -1,0 +1,25 @@
+{% include "base/header.html" %}
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;">Информация о клубе <strong>{{ club_info.club_name }}</strong></h5>
+                
+                <p style="text-align: center;margin-top: 5px;">
+                    <img height="90px" width="90px" src="{{ club_info.club_avatar }}"style="border-right: 5px;border-width: 1px;">
+            </div>
+        </div>
+
+
+        <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;height: auto;">
+            <p style="height: 14px;">Название:<b> {{ club_info.club_name }}</b></p>
+            <p style="height: 14px;">Фанатов:<b> {{ club_info.count_fanats }}</b></p>
+            <p style="height: 14px;">Лидер клуба:<b> {% if club_info.club_leader_id == 0 %} {{ club_info.club_leader_name }} 
+                {% else %}
+            <a href="user-{{club_info.club_leader_id}}" style="color: #CA4D29;"> {{ club_info.club_leader_name }} </a>{% endif %}</b></p> 
+            <p style="height: 14px;">Рейтинг:<b> 0</b></p>
+            <p style="height: 14px;">Стоимость клуба:<b> {{ club_info.club_price }}</b> <img src="static/assets/img/dollar.webp"></p>
+        </div>
+
+
+{% include "base/footer.html" %}

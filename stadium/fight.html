@@ -1,0 +1,92 @@
+{% include "base/header.html" %}
+
+<style type="text/css">
+    .cfm {
+        max-width: 55px;
+    } 
+</style>
+
+
+        <div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;padding-top: 5px;"><strong>Бой</strong></h5>
+                <!--<p>Лучшее место для заработка и проверки твоих боевых навыков</p>-->
+            </div>
+        </div>
+
+
+    {% for user in random_list %}
+        <div class="row" style="text-align: center;background: #CCDBBC;">
+            <div class="col-3"><img height="80px" width="80px" src="{% if user.nevidim == 0 %} {{user.avatar}} {% else %} static/assets/img/incognito.png {% endif %}" style="padding-top: 0px;border-radius: 5px;"></div>
+            <div class="col-9" style="">
+                <p style="text-align: left;margin-bottom: 0px;font-size: 16px;color: #CA4D29;"><strong>{% if user.nevidim == 0 %} {{ user.name }}{% else %} Неведимка {% endif %}</strong> [{% if user.nevidim == 0 %} {{user.level}} {% else %} ** {% endif %}]  <span style="color: black;">({% if user.nevidim == 0 %} {{ user.healt }} {% else %} ** {% endif %} <img src="static/assets/img/heart.webp">)</span></p>
+                <div style="margin-top: 5px;">
+                    
+
+        <div class="row" style="text-align: center;background: #CCDBBC;">  
+            <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;">
+                <a href="match-fight?kick={{ user.random_left }}"><button class="btn" type="button" style="padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;margin-right: 10px;padding-right: 0px;padding-left: 0px;"><img src="static/fight/fight-left.png" style="width: 55px;height: 55px;"></button></a></div>
+                
+            <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;">
+                <a href="match-fight?kick={{ user.random_right }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;"><img src="static/fight/fight-right.png" style="width: 55px;height: 55px;"></button></a></div>
+                    
+                {% for stuff in stuff_list %}
+                    {% if stuff[1] == 'Бильярдный шар' %}
+                            <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;"><a href="match-fight?kick={{ user.random_ball }}">
+                                <img style="border-radius: 5px;" height="55px" width="55px" src="{{ stuff[0] }}">
+                                <div style="position: absolute;right: -10px;bottom: 0px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{ stuff[2]}}</span></div></a>
+                            </div>  
+                                <!--                        <a href="match-fight?kick={{ user.random_ball }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;"><img src="{{ stuff[0] }}" style="width: 55px;height: 55px;"></button></a>-->
+                    {% elif stuff[1] == 'Шишка' %}
+                        <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;"><a href="match-fight?kick={{ user.random_cone }}">
+                                <img style="border-radius: 5px;" height="55px" width="55px" src="{{ stuff[0] }}">
+                                <div style="position: absolute;right: -10px;bottom: 0px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{ stuff[2]}}</span></div></a>
+                            </div>
+
+
+
+                        <!--<a href="match-fight?kick={{ user.random_cone }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;"><img src="{{ stuff[0] }}" style="width: 55px;height: 55px;"></button></a>-->
+                    {% elif stuff[1] == 'Кактус' %}
+                        <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;"><a href="match-fight?kick={{ user.random_kaktus }}">
+                                <img style="border-radius: 5px;" height="55px" width="55px" src="{{ stuff[0] }}">
+                                <div style="position: absolute;right: -10px;bottom: 0px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{ stuff[2]}}</span></div></a>
+                            </div>
+
+
+                        <!--<a href="match-fight?kick={{ user.random_cactus }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;"><img src="{{ stuff[0] }}" style="width: 55px;height: 55px;"></button></a> -->
+                    {% elif stuff[1] == 'Футбольный мяч' %}
+                        <div class="col cfm" style="padding-top: 0px;border-radius: 5px;position: relative;"><a href="match-fight?kick={{ user.random_football }}">
+                                <img style="border-radius: 5px;" height="55px" width="55px" src="{{ stuff[0] }}">
+                                <div style="position: absolute;right: -10px;bottom: 0px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{ stuff[2]}}</span></div></a>
+                            </div>
+
+
+                        <!--<a href="match-fight?kick={{ user.random_cactus }}"><button class="btn" type="button" style="padding-right: 0px;padding-top: 0px;padding-bottom: 0px;border-width: 0px;width: 55px;height: 55px;padding-left: 0px;"><img src="{{ stuff[0] }}" style="width: 55px;height: 55px;"></button></a> -->
+                    {% endif %}
+                {% endfor %}
+            </div></div>
+            <hr style="height: 1px;margin-top: 5px;">
+        </div></div>
+        {% endfor %}
+        
+
+        <div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="match-fight"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/location/index/brass-knuckles.svg" height="24px" width="24px">&nbsp;Искать ещё</button></a></div>
+        </div>
+                <div class="row" style="text-align: center;background: #CCDBBC;height: auto;">
+            <div class="col" style="height: auto;padding-left: 0px;padding-right: 0px;text-align: left;"><a href="match"><button class="btn btn-primary" type="button" style="width: 100%;text-align: left;background: #56864c;border-color: #294c24;border-radius: 0px;height: 45px;"><img src="static/assets/img/left-arrow.png" height="24px" width="24px">&nbsp;Назад</button></a></div>
+        </div>
+
+
+{% if list_eats %}
+    <div class="row" style="text-align: center;background: #CCDBBC;height: 75px;">
+        {% for eat in list_eats %}
+        <div class="col-2" style="padding-top: 0px;border-radius: 15px;min-width: 75px;max-width: 75px;position: relative;">
+            <a href="eat?id={{eat.item_id}}&name={{ eat.item_name }}"><img style="border-radius: 15px;" height="70px" width="70px" src="{{eat.item_avatar}}"></a>
+            <div style="position: absolute;right: -6px;bottom: 5px;font-size: 15px;background-color: #00000050"><span style="color: #fff;padding-left: 2px;padding-right: 2px;">{{eat.item_count}}</span></div>
+        </div>  
+        {% endfor %}
+    </div>
+{% endif %}
+
+{% include "base/footer.html" %}

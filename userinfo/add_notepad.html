@@ -1,0 +1,26 @@
+{% include "base/header.html" %}
+
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Настройки</strong></h5>
+                <!--<p style="text-align: left;font-size: 14px;">Описание.</p>-->
+            </div>
+        </div>
+
+            <div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;">
+                <div class="col" style="padding-right: 5px;">
+                    <form action="notepad" method="post">
+                        <input type="hidden" name="userid" value="{{user_note}}">
+                        <label>Куда его записать?</label><br>
+                        <select name="add_notepad" style="width: 100%;">
+                            <option value="Кореша">Кореша</option>
+                            <option value="Мясо">Мясо</option>
+                            <option value="Игнор">Игнор</option>
+                            <option value="Остальные">Остальные</option>
+                            <option value="Приглашенные">Приглашенные</option>
+                        </select><br><br>
+                        <p style="text-align: center"><button class="btn" type="submit" style="background-color: orange;border-width: 0px;">Сохранить</button></p>
+                    </form>
+                </div>
+            </div>
+{% include "base/footer.html" %}

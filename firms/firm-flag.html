@@ -1,0 +1,23 @@
+{% include "base/header.html" %}
+
+<form action="strongbox" method="POST">
+<div class="row">
+            <div class="col" style="background: #CCDBBC;">
+                <h5 style="text-align: center;color: #CA4D29;"><strong>Флаг</strong></h5>
+            </div>
+        </div>
+    
+<div class="row" style="text-align: left;background: #CCDBBC;margin-right: -15px;padding-left: 15px;padding-top: 15px;padding-bottom: 15px;">
+    <div class="col-3" >
+        <img src="static/firms/finish_bg.png" width="100%">
+    </div>
+    <div class="col-9">
+    <p>Флаг позволяет учавствовать в битвах на пустыре.<br>Фирма которая победила - сохраняет свой флаг, проигравшая - теряет.</p>
+    Стоимость: <b>{{ flag_price }}</b> <img src="static/assets/img/dollar.webp"><br><br>
+        {% if firm_flag == 0 %}<a href="firm-flag?buy=true"><button class="btn" type="button" style="background-color:crimson;border-width: 0px;">Купить</button></a>{% endif %}
+        <br><br>
+    </div>
+</div>
+
+    
+{% include "base/footer.html" %}
